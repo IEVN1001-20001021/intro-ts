@@ -1,54 +1,33 @@
 import { areas } from "./areas";
 
-class volumenPrisma extends areas{
-    private volumen:number;
-    constructor(lado:number,altura:number,radio:number){
-        super(lado,altura,radio);
-        this.volumen=0;
+class volumenes extends areas{
+    private altura:number;
+    constructor(lado:number, ancho:number, radio:number, altura:number){
+        super(lado, ancho, radio);
+        this.altura = altura;
     }
-    calcularVolumen(){
-        this.volumen=this.areaCuadrado(this.lado)*this.altura;
+    volumenPrismaRectangular():number{
+        return this.areaRectangulo() * this.altura;
     }
-    imprimir(){
-        this.calcularVolumen();
-        console.log(`Volumen Del Prisma: ${Number(this.volumen).toFixed(2)}`);
+    volumenPrismaCuadrado():number{
+        return this.areaCuadrado() * this.altura;
     }
-}
-
-class volumenPiramide extends areas{
-    private volumen:number;
-    constructor(lado:number,altura:number,radio:number){
-        super(lado,altura,radio);
-        this.volumen=0;
+    volumenCilindro():number{
+        return this.areaCirculo() * this.altura;
     }
-    calcularVolumen(){
-        this.volumen=(this.areaCuadrado(this.lado)*this.altura)/3;
-    }
-    imprimir(){
-        this.calcularVolumen();
-        console.log(`Volumen De La Piramide: ${Number(this.volumen).toFixed(2)}`);
+    imprimirVolumenes():void{
+        console.log(`Volumen Prisma Rectangular: ${Number(this.volumenPrismaRectangular().toFixed(2))}`);
+        console.log(`Volumen Prisma Cuadrado: ${Number(this.volumenPrismaCuadrado().toFixed(2))}`);
+        console.log(`Volumen Cilindro: ${Number(this.volumenCilindro().toFixed(2))}`);
     }
 }
 
-class volumenCilindro extends areas{
-    private volumen:number;
-    constructor(lado:number,altura:number,radio:number){
-        super(lado,altura,radio);
-        this.volumen=0;
-    }
-    calcularVolumen(){
-        this.volumen=this.areacirculo(this.radio)*this.altura;
-    }
-    imprimir(){
-        this.calcularVolumen();
-        console.log(`Volumen Del Cilindro: ${Number(this.volumen).toFixed(2)}`);
-    }
-}
+//Areas
+const area = new areas(5,8,5);
+console.log(`Area Rectangulo: ${Number(area.areaRectangulo().toFixed(2))}`);
+console.log(`Area Cuadrado: ${Number(area.areaCuadrado().toFixed(2))}`);
+console.log(`Area Circulo: ${Number(area.areaCirculo().toFixed(2))}`);
 
-const prisma = new volumenPrisma(5,10,0);
-const piramide = new volumenPiramide(10,15,0);
-const cilindro = new volumenCilindro(0,10,5);
-prisma.imprimir();
-piramide.imprimir();
-cilindro.imprimir();
-
+//Volumenes
+const volumen = new volumenes(5, 8, 5, 10);
+volumen.imprimirVolumenes();

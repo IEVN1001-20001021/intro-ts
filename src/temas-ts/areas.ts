@@ -1,19 +1,19 @@
 export class areas{
     protected lado:number;
-    protected altura:number;
+    protected ancho:number;
     protected radio:number;
-    constructor(lado:number,altura:number,radio:number){
+    constructor(lado:number,ancho:number,radio:number){
         this.lado=lado;
-        this.altura=altura;
+        this.ancho=ancho;
         this.radio=radio;
     }
-    areaCuadrado(lado:number):number{
-        return lado*lado;
+    areaRectangulo():number{
+        return this.lado * this.ancho;
     }
-    areaRectangulo(lado:number,altura:number):number{
-        return lado*altura;
+    areaCuadrado():number{
+        return this.lado * this.lado;
     }
-    areacirculo(radio:number):number{
-        return Math.PI*Math.pow(radio,2);
+    areaCirculo():number{
+        return Math.PI * Math.pow(this.radio,2);
     }
 }
